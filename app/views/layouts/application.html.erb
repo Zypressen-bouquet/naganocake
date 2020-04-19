@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header class="header">
+    <!-- ユーザでログインしている場合 -->
+    <% if user_signed_in? %>
+      <%= render 'layouts/user_header' %>
+
+    <!-- 管理者でログインしている場合 -->
+    <% elsif admin_signed_in? %>
+      <%= render 'layouts/admin_header' %>
+
+    <!-- ログインしていない場合 -->
+    <% else %>
+      <%= render 'layouts/before_login' %>
+    <% end %>
+
+   </header>
+
+
+    <main>
+      <div class="container">
+   <%= render 'layouts/flash_messages' %>
+      </div>
+    <%= yield %>
+    </main>
+
+
+
+    <footer class="footer text-brown", style="background-color: #FFDBC9;">
+
+
+      <div class="container text-center mt-3">
+        <p>3枚おろし</p>
+      </div>
+    </footer>
+
+
+  </body>
+</html>

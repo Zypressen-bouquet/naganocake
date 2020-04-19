@@ -1,0 +1,18 @@
+
+<div class="container-fluid", style="background-color: #FFDBC9">
+	<div class="container">
+	  <div class="navbar header">
+	    <%= link_to image_tag('長野ケーキ.png'), root_path, class: "navbar-brand" %>
+	  </div>
+
+
+	      <ul class="nav navbar-nav navbar-right">
+
+	      <%= link_to "ログイン" ,new_user_session_path,class:"glyphicon glyphicon-log-in sign_in" %>
+
+	      <%= link_to "ログイン(管理者)" ,new_admin_session_path,class:"glyphicon glyphicon-log-in sign_in"  %>
+
+	      <%= link_to "ユーザ登録",new_user_registration_path,class:"glyphicon glyphicon-edit sign_up" %>
+	      </ul>
+  </div>
+</div>

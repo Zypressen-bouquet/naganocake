@@ -1,0 +1,65 @@
+<div class="container">
+<div class = "row">
+    <div class = "col-xs-12">
+    <h3 class="under-border">ショッピングカート</h3>
+    <%= link_to "カートを空にする",destroy_all_carts_path, method: :delete, class: "btn btn-danger" %>
+
+    </br>
+
+    <table class = "table table-bordered">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @carts.each do |cart| %>
+            <tr>
+                <td><%= cart.product.name%></td>
+                <td><%= disp_tax_price(cart.product.unit_price)%></td>
+                <td>
+                    <%= form_for cart do |c|%>
+                    <%= c.number_field :units,min:1,max:10000,step:1 %>
+                    <%= c.submit "変更", class: "btn btn-primary" %>
+                    <% end%>
+                </td>
+                <td>
+                    <%= disp_price(tax_price(cart.product.unit_price) * cart.units) %>
+                </td>
+                <td>
+                    <%= link_to "削除する",cart_path(cart.id), method: :delete, class: "btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    </br>
+    </div>
+</div>
+
+<div class = "col-xs-8">
+    <span>
+    <%= link_to "買い物を続ける",root_path, class: "btn btn-primary" %>
+    </span>
+
+</div>
+<div class = "col-xs-4">
+    <table class = "table table-bordered">
+        <tr>
+            <td class>合計金額</td>
+            <td><%= disp_price(current_user.user_total_price)%></td>
+        </tr>
+    </table>
+</div>
+<div class = "col-xs-4"></div>
+<div class = "col-xs-4">
+    <span>
+        <%= link_to "情報入力に進む", input_orders_path, class: "col-xs-12 btn btn-success"%>
+    </span>
+    </div>
+</div>
+<div class = "col-xs-4"></div>

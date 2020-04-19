@@ -1,0 +1,31 @@
+
+<div class="container-fluid", style="background-color: #FFDBC9">
+  <div class="container">
+  <div class="row">
+  <div class="navbar header">
+  	<%= link_to image_tag('長野ケーキ.png'), root_path, class: "navbar-brand" %>
+  	</div>
+
+      <ul class="nav navbar-nav .justify-content-center">
+
+      <div class="text-center">
+      	ようこそ、<%= current_user.last_name %><%= current_user.first_name %>さん！
+      </div>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+      <%= link_to "マイページ", user_path(current_user),class:"glyphicon glyphicon-user"%>
+
+      <%= link_to "商品一覧", products_path, class:"glyphicon glyphicon-gift" %>
+
+      <%= link_to "カート", carts_path, class:"glyphicon glyphicon-shopping-cart" %>
+
+      <%= link_to "ログアウト" ,destroy_user_session_path, method: :delete,class:"glyphicon glyphicon-log-out" %>
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

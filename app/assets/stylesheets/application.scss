@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.imgWrap {
+  overflow: hidden;
+}
+
+.imgWrap img {
+  transition-duration: 0.3s;
+}
+
+.imgWrap img:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+.top-padding {
+  @extend .container-fluid ;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.delivery_form_control {
+    @extend .form-control;
+    display: inline;
+    width: auto;
+    margin-left: 30px;
+}
+
+.delivery_address_control {
+    @extend .form-control;
+    display: inline;
+    width: 250px;
+    margin-left: 30px;
+}
+
+.delivery_label {
+    width: 200px;
+    display: inline-block;
+
+}
+
+.delivery_registration_button {
+    width: 80px;
+    display: inline-block;
+}
+
+.delivery_edit_button {
+    @extend .form-control;
+    display: inline-block;
+    width: 100px;
+    float: right;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFF0;
+}
+
+a {
+    color: #555500;
+    text-decoration: underline;
+}
+
+.item img {
+    width: 100%;
+}
+
+
+.user-edit {
+    margin-top: 15px;
+}
+
+
+th {
+    background: #bdc3c7;
+}
+
+// フッター最下部固定
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
+}
+
+.under-border{
+  text-decoration : underline;
+  text-decoration-color: #FFA07A;
+  border-width: 1px;
+
+}

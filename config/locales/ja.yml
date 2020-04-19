@@ -1,0 +1,92 @@
+ja:
+  hello: "こんにちは"
+  enums:
+    genre:
+      display_status:
+        "true": "有効"
+        "false": "無効"
+
+    product:
+      status:
+        "true": "販売中"
+        "false": "販売停止中"
+
+    order:
+      payment_method:
+        card: "クレジットカード"
+        transfar: "銀行振込"
+
+      status:
+        waiting_payment: "入金待ち"
+        confirm: "入金確認"
+        making: "製作中"
+        waiting_shipping: "発送準備中"
+        already_shipping: "発送済み"
+
+    ordered_product:
+      working_status:
+        cannot: "着手不可"
+        waiting: "製作待ち"
+        making: "制作中"
+        done: "制作完了"
+
+  activerecord:
+    models:
+      user: "ユーザー"
+      admin: "管理者"
+      cart: "カート"
+      delivery: "配送先"
+      product: "プロダクト"
+      genre: "ジャンル"
+      order: "注文情報"
+      ordered_product: "注文詳細情報"
+    attributes:
+      user:
+        last_name: "名前(姓)"
+        first_name: "名前(名)"
+        last_name_kana: "カナ(姓)"
+        first_name_kana: "カナ(名)"
+        post_code: "郵便番号"
+        address: "住所"
+        phone_number: "電話番号"
+        email: "メールアドレス"
+        status: "ユーザ状態ステータス"
+        password: "パスワード"
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+      cart:
+        user_id: "ユーザID"
+        product_id: "商品ID"
+        units: "個数"
+      delivery:
+        user_id: "ユーザ一覧"
+        post_code: "郵便番号"
+        address: "住所"
+        name: "氏名"
+      product:
+        genre_id: "ジャンルID"
+        genre: "ジャンル"
+        name: "商品名"
+        unit_price: "単価(税抜き)"
+        description: "商品説明"
+        image_id: "商品画像"
+        status: "販売ステータス"
+      genre:
+        genre: "ジャンル"
+        display_status: "表示ステータス"
+      order:
+        user_id: "ユーザID"
+        payment_method: "支払方法"
+        shipping_fee: "送料"
+        total_payment: "合計金額"
+        status: "ステータス"
+        name: "宛名"
+        address: "住所"
+        post_code: "郵便番号"
+      ordered_product:
+        order_id: "オーダーID"
+        product_id: "商品ID"
+        working_status: "作業ステータス"
+        units: "個数"
+        price: "金額"

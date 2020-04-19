@@ -1,0 +1,87 @@
+<!-- 画面表示用 -->
+<div class="container">
+  <div class="row">
+    <h3 class="under-border">注文情報確認</h3>
+    <div class="col-xs-7">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="active">
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @carts.each do |cart| %> 
+          <tr>
+            <td> <%= attachment_image_tag(@product, :image, :limit, 50, 50,  fallback: "no-image.png",size: "50x50")%>   <%= cart.product.name %></td>
+            <td><%= disp_price(tax_price(cart.product.unit_price)) %></td>
+            <td><%= cart.units %></td>
+            <td><%= disp_price(tax_price(cart.product.unit_price) *  cart.units) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+      <div class="col-xs-5">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="active">送料</td>
+              <td>800</td>
+            </tr>
+            <tr>
+              <td class="active">商品合計</td>
+              <td><%= disp_price(current_user.user_total_price) %></td>
+            </tr>
+            <tr>
+              <td class="active">請求金額</td>
+              <td><%= disp_price(current_user.total_price_commission) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <h4>支払方法</h4>
+      </div>
+      <div class="col-xs-4">
+        <h4><%= t("enums.order.payment_method.#{@payment_method}") %></h4>    
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <h4>お届け先</h4>                      
+      </div>
+      <div class="col-xs-4">
+        <h4><%= @post_code %> <%= @address %></h4>
+        <h4><%= @name %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- createするためにパラメータを送る用 -->
+
+      <%= form_with model: @order, local: true do |f|%>
+        <%= render 'layouts/error_messages', model: @order %>
+        <%= hidden_field_tag :delivery_addr,@delivery_addr %>
+        <%= f.hidden_field :shipping_fee, value: 800 %>
+        <%= f.hidden_field :total_payment, value: current_user.user_total_price %>
+        <%= f.hidden_field :payment_method %>
+        <%= f.hidden_field :post_code, value: @post_code %>
+        <%= f.hidden_field :address, value: @address %>
+        <%= f.hidden_field :status, value: :waiting_payment %>
+        <%= f.hidden_field :name, value: @name %>
+        <div class="row text-center">
+          <%= f.submit "購入を確定する", class:"btn btn-success" %>
+        </div>
+      <% end %>
+  </div>    
+  </div>  
+</div>
